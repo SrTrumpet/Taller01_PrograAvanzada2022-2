@@ -1,5 +1,29 @@
+import java.util.Arrays;
 
 public class Menu {
+	
+	private Traductor traductor = new Traductor();
+	private String[] registro; 
+	private int add = 0;
+	
+	
+	public void inicializarRegistro(int cantidad) {
+		int maxRegistro = 0;
+		if(cantidad == 0) {
+			maxRegistro = 1;
+		}else {
+			maxRegistro = cantidad;
+		}
+		this.registro = new String[maxRegistro];
+	}
+	
+	public void crearRegistro(String linea) {
+		String registroString = traductor.traductorExtraterrestreHumano(linea);
+		registro[add] = registroString;
+		add++;
+		
+
+	}
 
 	/***
 	 * Da la opcion de ingresar a un nuevo extraterrestre por consola
@@ -112,4 +136,10 @@ public class Menu {
 	public void mostrarCantidadExtraterrestres() {
 
 	}
+	
+	public void mostrarDatosPrueba() {
+		System.out.println(Arrays.toString(registro));
+	}
+	
+	
 }
