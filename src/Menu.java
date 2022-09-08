@@ -1,27 +1,60 @@
 import java.util.Arrays;
 
 public class Menu {
-	
+
 	private Traductor traductor = new Traductor();
-	private String[] registro; 
-	private int add = 0;
-	
-	
-	public void inicializarRegistro(int cantidad) {
+	private String[] registro;
+	private String[] registroHumano;
+	private int addExtra = 0;
+	private int addHumano = 0;
+
+	/***
+	 * Da el tamaño inicial de los registros que contendran los datos de los
+	 * extraterrestres y humanos
+	 * 
+	 * @param cantidad (valor que define la cantidad de espacio del arreglo)
+	 * @param tipo     (define si sera registro humano o extraterrestre)
+	 */
+	public void inicializarRegistro(int cantidad, int tipo) {
+
 		int maxRegistro = 0;
-		if(cantidad == 0) {
-			maxRegistro = 1;
-		}else {
-			maxRegistro = cantidad;
+
+		if (tipo == 0) {
+			if (cantidad == 0) {
+				maxRegistro = 1;
+			} else {
+				maxRegistro = cantidad;
+			}
+			this.registro = new String[maxRegistro];
+
+		} else if (tipo == 1) {
+			if (cantidad == 0) {
+				maxRegistro = 1;
+			} else {
+				maxRegistro = cantidad;
+			}
+			this.registroHumano = new String[maxRegistro];
 		}
-		this.registro = new String[maxRegistro];
+
 	}
-	
-	public void crearRegistro(String linea) {
-		String registroString = traductor.traductorExtraterrestreHumano(linea);
-		registro[add] = registroString;
-		add++;
-		
+
+	/***
+	 * Convierte los datos de un archivo txt a un arreglo de String
+	 * 
+	 * @param linea
+	 * @param ex
+	 */
+
+	public void crearRegistro(String linea, int ex) {
+		if (ex == 0) {
+			String registroString = traductor.traductorExtraterrestreHumano(linea);
+			registro[addExtra] = registroString;
+			addExtra++;
+		} else if (ex == 1) {
+			String registroString = traductor.cambiarMedidasHumanas(linea);
+			registroHumano[addHumano] = registroString;
+			addHumano++;
+		}
 
 	}
 
@@ -131,15 +164,15 @@ public class Menu {
 	 * Muestra por consola los tipos de extraterrestres que existen separados por su
 	 * estructura
 	 * 
-	 *  @post V = Vertebrados, I = Invertebrados y F = Flexible
+	 * @post V = Vertebrados, I = Invertebrados y F = Flexible
 	 */
 	public void mostrarCantidadExtraterrestres() {
 
 	}
-	
+
 	public void mostrarDatosPrueba() {
 		System.out.println(Arrays.toString(registro));
+		System.out.println(Arrays.toString(registroHumano));
 	}
-	
-	
+
 }
