@@ -1,7 +1,9 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Menu {
 
+	private AmpliarRegistro ampliar = new AmpliarRegistro();
 	private Traductor traductor = new Traductor();
 	private String[] registro;
 	private String[] registroHumano;
@@ -61,8 +63,14 @@ public class Menu {
 	/***
 	 * Da la opcion de ingresar a un nuevo extraterrestre por consola
 	 * 
+	 * @param leer (Scanner)
 	 */
-	public void ingresarExtraterrestre() {
+	public void ingresarExtraterrestre(String nombreEspecie, String nombre, String iUniversal, String planeta,
+			String edad, String altura, String peso, String tipo) {
+		
+		String datos = nombreEspecie+","+nombre+","+iUniversal+","+planeta+","+edad+","+altura+","+peso+","+tipo;
+		
+		this.registro = ampliar.add(datos, this.registro);
 
 	}
 
