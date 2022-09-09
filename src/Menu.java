@@ -142,6 +142,7 @@ public class Menu {
 
 	/***
 	 * Da la opcion de ingresar a un nuevo humano por consola
+	 * 
 	 */
 	public void ingresarHumano() {
 

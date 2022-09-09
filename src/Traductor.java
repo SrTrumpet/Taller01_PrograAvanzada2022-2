@@ -56,7 +56,6 @@ public class Traductor {
 
 		traduccion = cambiarMedidasExtraterrestreHumano(traduccion);
 
-
 		return traduccion;
 	}
 

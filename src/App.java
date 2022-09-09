@@ -2,6 +2,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+
+/***
+ * 
+ * @author Elias M. Olivares
+ *
+ */
 public class App {
 
 	public static void main(String[] args) throws IOException {
@@ -58,16 +64,16 @@ public class App {
 				System.out.println("Recuerde Ingresar los datos como Humano!!");
 				System.out.println("#############################################");
 				System.out.println(" ");
-				
+
 				System.out.println("Ingrese Nombre de especie: ");
 				String especie = leer.nextLine();
-				
+
 				System.out.println("Ingrese nombre del extraterrestre: ");
 				String nombre = leer.nextLine();
-				
+
 				System.out.println("Ingrese identificacion universal: ");
 				String iUniversal = leer.nextLine().toUpperCase();
-				
+
 				System.out.println("Ingrese planeta de origen: ");
 				String planeta = leer.nextLine();
 
@@ -78,14 +84,14 @@ public class App {
 
 				System.out.println("Ingrese altura: ");
 				String altura = leer.nextLine();
-				double alturaExt = Math.round(Double.parseDouble(altura)*100);
+				double alturaExt = Math.round(Double.parseDouble(altura) * 100);
 				altura = String.valueOf(alturaExt);
-				
+
 				System.out.println("Ingrese peso: ");
 				String peso = leer.nextLine();
-				double pesoExt = Math.round(Double.parseDouble(peso)*1000);
+				double pesoExt = Math.round(Double.parseDouble(peso) * 1000);
 				peso = String.valueOf(pesoExt);
-				
+
 				System.out.println("Ingrese tipo: ");
 				String tipo = leer.nextLine().toUpperCase();
 
@@ -95,11 +101,11 @@ public class App {
 				break;
 			}
 			case 2: {
-				
+
 				System.out.println("Ingrese la Identificacion Universal: ");
 				String iUniversal = leer.nextLine();
 				System.out.println("Que dato cambiara? (Recuerde Ingresar los datos como Humano): ");
-				System.out.print(""" 
+				System.out.print("""
 						1. Nombre de Especie
 						2. Nombre
 						3. Identificacion Universal
@@ -107,14 +113,14 @@ public class App {
 						5. Edad
 						6. Altura
 						7. Peso
-						8. Tipo 
+						8. Tipo
 						>> """);
 				int datoCambiar = Integer.parseInt(leer.nextLine());
 				System.out.println("Ingrese el nuevo dato: ");
 				String nuevoDato = leer.nextLine();
-				
-				menu.modificarExtraterrestre(iUniversal, datoCambiar, nuevoDato,menu);
-				
+
+				menu.modificarExtraterrestre(iUniversal, datoCambiar, nuevoDato, menu);
+
 				break;
 			}
 			case 3: {
