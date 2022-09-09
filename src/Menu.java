@@ -61,9 +61,9 @@ public class Menu {
 
 	/***
 	 * 
-	 *Da la opcion de ingresar a un nuevo extraterrestre por consola.
+	 * Da la opcion de ingresar a un nuevo extraterrestre por consola.
 	 * 
-	 *@Precondicion Se deben de ingresar los datos en el lenguaje humano
+	 * @Precondicion Se deben de ingresar los datos en el lenguaje humano
 	 * 
 	 * @param nombreEspecie
 	 * @param nombre
@@ -76,66 +76,68 @@ public class Menu {
 	 */
 	public void ingresarExtraterrestre(String nombreEspecie, String nombre, String iUniversal, String planeta,
 			String edad, String altura, String peso, String tipo) {
-		
-		String datos = nombreEspecie+","+nombre+","+iUniversal+","+planeta+","+edad+","+altura+","+peso+","+tipo;
-		
+
+		String datos = nombreEspecie + "," + nombre + "," + iUniversal + "," + planeta + "," + edad + "," + altura + ","
+				+ peso + "," + tipo;
+
 		this.registro = ampliar.add(datos, this.registro);
 
 	}
 
 	/***
-	 * Modifica los datos de un extraterrestre
+	 * Modifica los datos de un extraterrestre, se debe ingresar la "Identificacion
+	 * Universal" la cual debe ser unica para cada extraterrestre
 	 * 
 	 * @param iUniversal
 	 * @pre El extraterrestre ya debe estar registrado con anterioridad
 	 */
-	public void modificarExtraterrestre(String iUniversal,int datoACambiar,String nuevoDato,Menu admin) {
+	public void modificarExtraterrestre(String iUniversal, int datoACambiar, String nuevoDato, Menu admin) {
 
 		int posicionExtraterrestreRegistro = admin.buscar(iUniversal);
-		
-		if(posicionExtraterrestreRegistro == registro.length) {
+
+		if (posicionExtraterrestreRegistro == registro.length) {
 			System.out.println(" ");
 			System.out.println("#######################################");
 			System.out.println("Extraterrestre no encontrado");
 			System.out.println("#######################################");
-		}else {
+		} else {
 			System.out.println("#############################################");
-			System.out.println("Datos actuales del extraterrestre(Recordar que ya estan traducidos sus datos y medidas): ");
+			System.out.println(
+					"Datos actuales del extraterrestre(Recordar que ya estan traducidos sus datos y medidas): ");
 			System.out.println("#############################################");
 			String[] datos = registro[posicionExtraterrestreRegistro].split(",");
-			
-			System.out.println("Especie: "+datos[0]);
-			System.out.println("Nombre: "+datos[1]);
-			System.out.println("Planeta de origen: "+datos[3]);
-			System.out.println("Edad: "+datos[4]);
-			System.out.println("Altura: "+datos[5]+" [m]");
-			System.out.println("Peso: "+datos[6]+" [kg]");
-			System.out.println("Tipo: "+datos[7]);
-			
+
+			System.out.println("Especie: " + datos[0]);
+			System.out.println("Nombre: " + datos[1]);
+			System.out.println("Planeta de origen: " + datos[3]);
+			System.out.println("Edad: " + datos[4]);
+			System.out.println("Altura: " + datos[5] + " [m]");
+			System.out.println("Peso: " + datos[6] + " [kg]");
+			System.out.println("Tipo: " + datos[7]);
+
 			datos[datoACambiar - 1] = nuevoDato;
-			
+
 			System.out.println("#############################################");
 			System.out.println("Nuevos datos del extraterrestre");
 			System.out.println("#############################################");
-			
-			System.out.println("Especie: "+datos[0]);
-			System.out.println("Nombre: "+datos[1]);
-			System.out.println("Planeta de origen: "+datos[3]);
-			System.out.println("Edad: "+datos[4]);
-			System.out.println("Altura: "+datos[5]+" [m]");
-			System.out.println("Peso: "+datos[6]+" [kg]");
-			System.out.println("Tipo: "+datos[7]);
-			
-			String cambioRegistro = datos[0]+","+datos[1]+","+datos[2]+","+datos[3]+","+datos[4]+","+datos[5]+","+datos[6]+","+datos[7]+",";
-			
+
+			System.out.println("Especie: " + datos[0]);
+			System.out.println("Nombre: " + datos[1]);
+			System.out.println("Planeta de origen: " + datos[3]);
+			System.out.println("Edad: " + datos[4]);
+			System.out.println("Altura: " + datos[5] + " [m]");
+			System.out.println("Peso: " + datos[6] + " [kg]");
+			System.out.println("Tipo: " + datos[7]);
+
+			String cambioRegistro = datos[0] + "," + datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4] + ","
+					+ datos[5] + "," + datos[6] + "," + datos[7] + ",";
+
 			registro[posicionExtraterrestreRegistro] = cambioRegistro;
-			
+			System.out.println(" ");
+			System.out.println("Se realizo la modificacion Correctamente!");
+
 		}
 
-		
-		
-		
-		
 	}
 
 	/***
@@ -233,25 +235,21 @@ public class Menu {
 
 	}
 
-	
-	
 	private int buscar(String iUniversal) {
-		
+
 		int posicion = 0;
-		
-		for(String s: registro) {
+
+		for (String s : registro) {
 			String[] datos = s.split(",");
-			if(datos[2].equals(iUniversal)) {
+			if (datos[2].equals(iUniversal)) {
 				break;
 			}
 			posicion++;
 		}
 		return posicion;
-		
-		
-		
+
 	}
-	
+
 	public void mostrarDatosPrueba() {
 		System.out.println(Arrays.toString(registro));
 		System.out.println(Arrays.toString(registroHumano));
