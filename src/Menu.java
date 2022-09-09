@@ -61,9 +61,19 @@ public class Menu {
 	}
 
 	/***
-	 * Da la opcion de ingresar a un nuevo extraterrestre por consola
 	 * 
-	 * @param leer (Scanner)
+	 *Da la opcion de ingresar a un nuevo extraterrestre por consola.
+	 * 
+	 *@Precondicion Se deben de ingresar los datos en el lenguaje humano
+	 * 
+	 * @param nombreEspecie
+	 * @param nombre
+	 * @param iUniversal
+	 * @param planeta
+	 * @param edad
+	 * @param altura
+	 * @param peso
+	 * @param tipo
 	 */
 	public void ingresarExtraterrestre(String nombreEspecie, String nombre, String iUniversal, String planeta,
 			String edad, String altura, String peso, String tipo) {

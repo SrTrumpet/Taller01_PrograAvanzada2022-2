@@ -12,7 +12,7 @@ public class App {
 		app.ejecutor(app, menu);
 		menu.mostrarDatosPrueba();
 		System.out.println("##################");
-		app.menuInicio(leer,menu);
+		app.menuInicio(leer, menu);
 
 	}
 
@@ -50,28 +50,46 @@ public class App {
 					""");
 			System.out.println("Ingrese una opcion: ");
 			opcion = Integer.parseInt(leer.nextLine());
-			
+
 			switch (opcion) {
 			case 1: {
+				System.out.println("#############################################");
+				System.out.println("Recuerde Ingresar los datos como Humano!!");
+				System.out.println("#############################################");
+				System.out.println(" ");
 				System.out.println("Ingrese Nombre de especie: ");
 				String especie = leer.nextLine();
+				
 				System.out.println("Ingrese nombre del extraterrestre: ");
 				String nombre = leer.nextLine();
+				
 				System.out.println("Ingrese identificacion universal: ");
 				String iUniversal = leer.nextLine().toUpperCase();
+				
 				System.out.println("Ingrese planeta de origen: ");
 				String planeta = leer.nextLine();
+
 				System.out.println("Ingrese edad: ");
 				String edad = leer.nextLine();
+				int edadExtra = Integer.parseInt(edad) * 8;
+				edad = String.valueOf(edadExtra);
+
 				System.out.println("Ingrese altura: ");
 				String altura = leer.nextLine();
+				double alturaExt = Math.round(Double.parseDouble(altura)*100);
+				altura = String.valueOf(alturaExt);
+				
 				System.out.println("Ingrese peso: ");
 				String peso = leer.nextLine();
+				double pesoExt = Math.round(Double.parseDouble(peso)*1000);
+				peso = String.valueOf(pesoExt);
+				
 				System.out.println("Ingrese tipo: ");
 				String tipo = leer.nextLine().toUpperCase();
-				
+
 				menu.ingresarExtraterrestre(especie, nombre, iUniversal, planeta, edad, altura, peso, tipo);
 				menu.mostrarDatosPrueba();
+
 				break;
 			}
 			case 2: {
@@ -86,8 +104,7 @@ public class App {
 
 				break;
 			}
-			
-			
+
 			default:
 				throw new IllegalArgumentException("Valor ingresado no permitido:  " + opcion);
 			}
