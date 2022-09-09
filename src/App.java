@@ -11,7 +11,6 @@ public class App {
 
 		app.ejecutor(app, menu);
 		menu.mostrarDatosPrueba();
-		System.out.println("##################");
 		app.menuInicio(leer, menu);
 
 	}
@@ -34,6 +33,8 @@ public class App {
 
 		int opcion = -1;
 		while (opcion != 12) {
+			System.out.println(" ");
+			System.out.println("#######################################");
 			System.out.println("""
 					1: Ingresar extraterrestre
 					2: Modificar un extraterrestre
@@ -94,7 +95,26 @@ public class App {
 				break;
 			}
 			case 2: {
-
+				
+				System.out.println("Ingrese la Identificacion Universal: ");
+				String iUniversal = leer.nextLine();
+				System.out.println("Que dato cambiara? (Recuerde Ingresar los datos como Humano): ");
+				System.out.print(""" 
+						1. Nombre de Especie
+						2. Nombre
+						3. Identificacion Universal
+						4. Planeta de origen
+						5. Edad
+						6. Altura
+						7. Peso
+						8. Tipo 
+						>> """);
+				int datoCambiar = Integer.parseInt(leer.nextLine());
+				System.out.println("Ingrese el nuevo dato: ");
+				String nuevoDato = leer.nextLine();
+				
+				menu.modificarExtraterrestre(iUniversal, datoCambiar, nuevoDato,menu);
+				
 				break;
 			}
 			case 3: {
