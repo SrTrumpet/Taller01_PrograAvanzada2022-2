@@ -57,6 +57,7 @@ public class App {
 				System.out.println("Recuerde Ingresar los datos como Humano!!");
 				System.out.println("#############################################");
 				System.out.println(" ");
+				
 				System.out.println("Ingrese Nombre de especie: ");
 				String especie = leer.nextLine();
 				
