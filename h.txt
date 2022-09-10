@@ -1,1 +1,6 @@
-Chileno,Bocchi,1235467,Coquimbo,Ovalle,21,175,68,SR388/SR391/X884
+Chileno,Bocchi,1235467,Coquimbo,Ovalle,21,175,68000,SR388/SR391/X884
+Chileno,Trulo,1235467,Coquimbo,Ovalle,21,175,68000,SR388/SR391/X884
+Chileno,Trelo,1235467,Coquimbo,Ovalle,21,175,68000,SR388/SR391/X884
+Boliviano,Bocchi,1235467,Coquimbo,Ovalle,21,175,68000,SR388/SR391/X884
+Boliviano,Bocchi,1235467,Coquimbo,Ovalle,21,175,68000,SR388/SR391/X884
+Peruano,Bocchi,1235467,Coquimbo,Ovalle,21,175,68000,SR388/SR391/X884

@@ -48,4 +48,29 @@ public class AmpliarRegistro {
 		}
 		return nuevaLista;
 	}
+
+	/***
+	 * Se ingresa el dato clave para encontrar el dato que se eliminara, y se
+	 * ingresa la lista que se quiere quitar el dato
+	 * 
+	 * @param datoEliminar
+	 * @param listaAnterior
+	 * @return nuevaLista
+	 */
+	public String[] deletePlanet(String datos, String[] listaAnterior) {
+
+		int size = listaAnterior.length - 1; // Se crea una nueva lista con un espacion mayor que la lista anterior
+		String[] nuevaLista = new String[size];
+
+		int add = 0;
+
+		for (String s : listaAnterior) {
+			if (!s.equals(datos)) {
+				nuevaLista[add] = s;
+				add++;
+			}
+		}
+		return nuevaLista;
+	}
+
 }

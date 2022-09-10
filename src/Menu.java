@@ -93,7 +93,7 @@ public class Menu {
 	 */
 	public void modificarExtraterrestre(String iUniversal, int datoACambiar, String nuevoDato, Menu admin) {
 
-		int posicionExtraterrestreRegistro = admin.buscar(iUniversal,registro);
+		int posicionExtraterrestreRegistro = admin.buscar(iUniversal, registro);
 
 		if (posicionExtraterrestreRegistro == registro.length) {
 			System.out.println(" ");
@@ -156,32 +156,34 @@ public class Menu {
 	public void ingresarHumano(String nacionalidad, String nombre, String identificacion, String region, String ciudad,
 			String edad, int altura, int peso, String[] planetasDeTrabajo) {
 
-		double nuevaAltura = (double)altura/100;
-		int nuevoPeso = peso/1000;
-		
+		double nuevaAltura = (double) altura / 100;
+		int nuevoPeso = peso / 1000;
+
 		String datosPlaneta = "";
 		int tam = 1;
-		
-		for(String s: planetasDeTrabajo) {
-			
-			if(tam != planetasDeTrabajo.length) {
-				datosPlaneta += (s+"/");
-			}else {
+
+		for (String s : planetasDeTrabajo) {
+
+			if (tam != planetasDeTrabajo.length) {
+				datosPlaneta += (s + "/");
+			} else {
 				datosPlaneta += (s);
 			}
 			tam++;
 		}
-		
-		
-		String addRegistro = nacionalidad+","+nombre+","+identificacion+","+region+","+ciudad+","+edad+","+nuevaAltura+","+nuevoPeso+","+datosPlaneta;
-		
+
+		String addRegistro = nacionalidad + "," + nombre + "," + identificacion + "," + region + "," + ciudad + ","
+				+ edad + "," + nuevaAltura + "," + nuevoPeso + "," + datosPlaneta;
+
 		registroHumano = ampliar.add(addRegistro, registroHumano);
-		
-		
+
 	}
 
 	/***
-	 * Modifica los datos de un humano
+	 * Modifica los datos de un humano, si se quiere cambiar los datos de la lista
+	 * de los planetas como ultimo dato se debe ingresar "-1" si se quiere añadir un
+	 * dato, "-2" si se quiere eliminar un dato o se ingresa la posicion del planeta
+	 * para modificarlo
 	 * 
 	 * @pre El humano ya debe estar registrado con anterioridad
 	 * 
@@ -190,21 +192,127 @@ public class Menu {
 	 * @param nuevoDato
 	 * @param admin
 	 */
-	public void modificarHumano(String identificacion, int datoACambiar, String nuevoDato, Menu admin) {
+	public void modificarHumano(String identificacion, int datoACambiar, String nuevoDato, Menu admin, int planeta) {
 
-		
-		
-		
+		int posicionHumanoRegistro = admin.buscar(identificacion, registroHumano);
+
+		if (posicionHumanoRegistro == registroHumano.length) {
+			System.out.println(" ");
+			System.out.println("#######################################");
+			System.out.println("Humano no encontrado");
+			System.out.println("#######################################");
+		} else {
+			System.out.println("#############################################");
+			System.out.println("Datos actuales del Humano: ");
+			System.out.println("#############################################");
+			String[] datos = registroHumano[posicionHumanoRegistro].split(",");
+
+			System.out.println("Nacionalidad: " + datos[0]);
+			System.out.println("Nombre: " + datos[1]);
+			System.out.println("Identificacion: " + datos[2]);
+			System.out.println("Region: " + datos[3]);
+			System.out.println("Ciudad: " + datos[4]);
+			System.out.println("Edad: " + datos[5]);
+			System.out.println("Altura: " + datos[6] + " [m]");
+			System.out.println("Peso: " + datos[7] + " [kg]");
+			System.out.println("Planetas de trabajo: " + datos[8]);
+
+			if (datoACambiar == 9) {
+				String datoNuevoPlaneta = "";
+
+				if (planeta == -1) {
+					String planetas[] = datos[8].split("/");
+					planetas = ampliar.add(nuevoDato, planetas);
+					for (String s : planetas) {
+						datoNuevoPlaneta += (s + "/");
+					}
+
+				} else if (planeta == -2) {
+					String planetas[] = datos[8].split("/");
+					planetas = ampliar.deletePlanet(nuevoDato, planetas);
+					for (String s : planetas) {
+						datoNuevoPlaneta += (s + "/");
+					}
+
+				} else {
+					String planetas[] = datos[8].split("/");
+					planetas[planeta] = nuevoDato;
+					for (String s : planetas) {
+						datoNuevoPlaneta += (s + "/");
+					}
+				}
+
+				datos[datoACambiar - 1] = datoNuevoPlaneta;
+
+			} else {
+				datos[datoACambiar - 1] = nuevoDato;
+			}
+
+			System.out.println("#############################################");
+			System.out.println("Nuevos datos del Humano: ");
+			System.out.println("#############################################");
+
+			System.out.println("Nacionalidad: " + datos[0]);
+			System.out.println("Nombre: " + datos[1]);
+			System.out.println("Identificacion: " + datos[2]);
+			System.out.println("Region: " + datos[3]);
+			System.out.println("Ciudad: " + datos[4]);
+			System.out.println("Edad: " + datos[5]);
+			System.out.println("Altura: " + datos[6] + " [m]");
+			System.out.println("Peso: " + datos[7] + " [kg]");
+			System.out.println("Planetas de trabajo: " + datos[8]);
+
+			String cambioRegistro = datos[0] + "," + datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4] + ","
+					+ datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8];
+
+			registroHumano[posicionHumanoRegistro] = cambioRegistro;
+		}
+
 	}
 
 	/***
-	 * Muestra por consola los humanos que perteneces a la nacionalidad ingresada
+	 * Muestra por consola los humanos que perteneces a la nacionalidad ingresada,
 	 * 
 	 * @param nacionalidad
+	 * @param porcentaje   (Se ingresa 0 si no quiere mostar el porcentaje o 1 si se
+	 *                     quiere mostrar el porcentaje)
 	 * 
 	 * @pre La nacionalidad debe de existir
 	 */
-	public void mostrarPorNacionalidad(String nacionalidad) {
+	public void mostrarPorNacionalidad(String nacionalidad, int porcentaje) {
+
+		int porcentajeHumanos = 0;
+
+		System.out.println("Datos de los humanos en la nacionalidad de: " + nacionalidad);
+		System.out.println(" ");
+
+		for (String s : registroHumano) {
+			String[] datos = s.split(",");
+			if (datos[0].equals(nacionalidad)) {
+				System.out.println("#####################################");
+				System.out.println(" ");
+				System.out.println("Nacionalidad: " + datos[0]);
+				System.out.println("Nombre: " + datos[1]);
+				System.out.println("Identificacion: " + datos[2]);
+				System.out.println("Region: " + datos[3]);
+				System.out.println("Ciudad: " + datos[4]);
+				System.out.println("Edad: " + datos[5]);
+				System.out.println("Altura: " + datos[6] + " [m]");
+				System.out.println("Peso: " + datos[7] + " [kg]");
+				System.out.println("Planetas de trabajo: " + datos[8]);
+				System.out.println(" ");
+
+				porcentajeHumanos++;
+			}
+		}
+
+		if (porcentaje == 1) {
+			double porcentajeTotal = (100 * (int) porcentajeHumanos) / registroHumano.length;
+
+			System.out.println("#####################################");
+			System.out.println(" ");
+			System.out.println("Porcentaje de humanos en la nacion de " + nacionalidad + ": " + porcentajeTotal + "%");
+		}
 
 	}
 
@@ -213,25 +321,25 @@ public class Menu {
 	 * elimina
 	 * 
 	 * @param iUniversar
-	 * @param admin (Class Menu)
+	 * @param admin      (Class Menu)
 	 * 
 	 * @pre El extraterrestre debe existir en los registros
 	 * @post Se elimina el extraterrestre de los registros y sino se encuentra al
 	 *       extraterrestre los registros no cambian
 	 */
-	public void eliminarExtraterrestre(String iUniversal,Menu admin) {
+	public void eliminarExtraterrestre(String iUniversal, Menu admin) {
 
-		int posicion = admin.buscar(iUniversal,registro);
-		
-		if(posicion == registro.length) {
+		int posicion = admin.buscar(iUniversal, registro);
+
+		if (posicion == registro.length) {
 			System.out.println("###################");
 			System.out.println("Extraterrestre no esta en el registro!");
 			System.out.println("###################");
-		}else {
+		} else {
 			registro = ampliar.delete(iUniversal, registro);
 			System.out.println("Registro eliminado");
 		}
-		
+
 	}
 
 	/***
@@ -239,7 +347,7 @@ public class Menu {
 	 * elimina
 	 * 
 	 * @param identificacion
-	 * @param admin (Class Menu)
+	 * @param admin          (Class Menu)
 	 * 
 	 * @pre El humano debe existir en los registros
 	 * @post Se elimina el humano de los registros y sino se encuentra al humano los
@@ -247,17 +355,17 @@ public class Menu {
 	 */
 	public void eliminarHumano(String identificacion, Menu admin) {
 
-		int posicion = admin.buscar(identificacion,registroHumano);
-		
-		if(posicion == registroHumano.length) {
+		int posicion = admin.buscar(identificacion, registroHumano);
+
+		if (posicion == registroHumano.length) {
 			System.out.println("###################");
 			System.out.println("Humano no esta en el registro!");
 			System.out.println("###################");
-		}else {
+		} else {
 			registroHumano = ampliar.delete(identificacion, registroHumano);
 			System.out.println("Registro eliminado");
 		}
-		
+
 	}
 
 	/***
@@ -266,22 +374,22 @@ public class Menu {
 	 * @param iUniversal
 	 * @pre El extraterrestre debe existir en los registros
 	 */
-	public void buscarPorIdentificadorUniversar(String iUniversal,Menu menu) {
-		
+	public void buscarPorIdentificadorUniversar(String iUniversal, Menu menu) {
+
 		int posicion = menu.buscar(iUniversal, registro);
-		
-		if(posicion == registro.length) {
+
+		if (posicion == registro.length) {
 			System.out.println("Extraterrestre no encontrado en los registros");
-		}else {
+		} else {
 			String[] datos = registro[posicion].split(",");
-			System.out.println("Especie: "+datos[0]);
-			System.out.println("Nombre: "+datos[1]);
-			System.out.println("Identificacion Universal: "+datos[2]);
-			System.out.println("Planeta de Origen: "+datos[3]);
-			System.out.println("Edad (conversion a humano): "+datos[4]);
-			System.out.println("Altura: "+datos[5]+" [m]");
-			System.out.println("Peso: "+datos[6]+" [kg]");
-			System.out.println("Tipo: "+datos[7]);
+			System.out.println("Especie: " + datos[0]);
+			System.out.println("Nombre: " + datos[1]);
+			System.out.println("Identificacion Universal: " + datos[2]);
+			System.out.println("Planeta de Origen: " + datos[3]);
+			System.out.println("Edad (conversion a humano): " + datos[4]);
+			System.out.println("Altura: " + datos[5] + " [m]");
+			System.out.println("Peso: " + datos[6] + " [kg]");
+			System.out.println("Tipo: " + datos[7]);
 		}
 	}
 
@@ -321,7 +429,7 @@ public class Menu {
 	 * @param iUniversal
 	 * @return
 	 */
-	private int buscar(String iUniversal,String[] listaBuscar) {
+	private int buscar(String iUniversal, String[] listaBuscar) {
 
 		int posicion = 0;
 

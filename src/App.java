@@ -184,14 +184,53 @@ public class App {
 						9. Planetas
 						>> """);
 				int datoCambiar = Integer.parseInt(leer.nextLine());
-				System.out.println("Ingrese el nuevo dato: ");
-				String nuevoDato = leer.nextLine();
 				
-				
+				if(datoCambiar == 9) {
+					System.out.println("Quiere añadir o eliminar un planeta del registro? añadir = 1; eliminar = 2; modificar = 3: ");
+					int datoAddDelete = Integer.parseInt(leer.nextLine());
+					if(datoAddDelete == 1) {
+						System.out.println("Ingrese el nombre del planeta: ");
+						String planetaNuevo = leer.nextLine();
+						
+						menu.modificarHumano(identificacion, datoCambiar, planetaNuevo, menu, -1);
+						
+					}else if(datoAddDelete == 2) {
+						System.out.println("Ingrese el nombre del planeta: ");
+						String planetaEliminar = leer.nextLine();
+						
+						menu.modificarHumano(identificacion, datoCambiar, planetaEliminar, menu, -2);
+						
+						
+					}else if(datoAddDelete == 3) {
+						System.out.println("Posicion del planeta a cambiar: ");
+						int dato = Integer.parseInt(leer.nextLine());
+						System.out.println("Ingrese el nombre del planeta");
+						String planetaNuevo = leer.nextLine();
+						
+						menu.modificarHumano(identificacion, datoCambiar, planetaNuevo, menu, dato);
+						
+					}
+					else {
+						System.out.println("Dato no permitido!");
+					}
+					
+				}else {
+					System.out.println("Recuerde ingresar las medidas en [kg] o [m] segun corresponda: ");
+					System.out.println("Ingrese el nuevo dato: ");
+					String nuevoDato = leer.nextLine();
+					
+					menu.modificarHumano(identificacion, datoCambiar, nuevoDato, menu, 0);
+				}
+
 				break;
 			}
 			case 5: {
 
+				System.out.println("Ingrese la nacionalidad a buscar: ");
+				String nacionalidad = leer.nextLine();
+				
+				menu.mostrarPorNacionalidad(nacionalidad,0);
+				
 				break;
 			}
 			case 6: {
@@ -225,6 +264,11 @@ public class App {
 				break;
 			}
 			case 10: {
+				
+				System.out.println("Ingrese la nacionalidad a buscar: ");
+				String nacionalidad = leer.nextLine();
+				
+				menu.mostrarPorNacionalidad(nacionalidad,1);
 
 				break;
 			}
