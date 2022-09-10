@@ -168,6 +168,7 @@ public class App {
 			}
 			case 4: {
 				
+				////////////////////////////////////////////////////////////FALTA COMPLETAR
 				System.out.println("Ingrese la Identificacion : ");
 				String identificacion = leer.nextLine();
 				System.out.println("Que dato cambiara?: ");
@@ -211,7 +212,12 @@ public class App {
 				break;
 			}
 			case 8: {
-
+				
+				System.out.println("Ingrese la identificacion universal: ");
+				String iUniversal = leer.nextLine();
+				
+				menu.buscarPorIdentificadorUniversar(iUniversal, menu);
+				
 				break;
 			}
 			case 9: {

@@ -266,8 +266,23 @@ public class Menu {
 	 * @param iUniversal
 	 * @pre El extraterrestre debe existir en los registros
 	 */
-	public void buscarPorIdentificadorUniversar() {
-
+	public void buscarPorIdentificadorUniversar(String iUniversal,Menu menu) {
+		
+		int posicion = menu.buscar(iUniversal, registro);
+		
+		if(posicion == registro.length) {
+			System.out.println("Extraterrestre no encontrado en los registros");
+		}else {
+			String[] datos = registro[posicion].split(",");
+			System.out.println("Especie: "+datos[0]);
+			System.out.println("Nombre: "+datos[1]);
+			System.out.println("Identificacion Universal: "+datos[2]);
+			System.out.println("Planeta de Origen: "+datos[3]);
+			System.out.println("Edad (conversion a humano): "+datos[4]);
+			System.out.println("Altura: "+datos[5]+" [m]");
+			System.out.println("Peso: "+datos[6]+" [kg]");
+			System.out.println("Tipo: "+datos[7]);
+		}
 	}
 
 	/***
