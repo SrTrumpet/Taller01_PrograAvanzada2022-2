@@ -124,11 +124,90 @@ public class App {
 				break;
 			}
 			case 3: {
-
+				
+				System.out.println("Ingrese los datos para registrar a un humano: ");
+				System.out.println(" ");
+				System.out.println("Ingrese nacionalidad: ");
+				String nacionalidad = leer.nextLine();
+				
+				System.out.println("Ingrese nombre: ");
+				String nombre = leer.nextLine();
+				
+				System.out.println("Ingrese identificacion: ");
+				String identificacion = leer.nextLine();
+				
+				System.out.println("Ingrese region: ");
+				String region = leer.nextLine();
+				
+				System.out.println("Ingrese ciudad: ");
+				String ciudad = leer.nextLine();
+				
+				System.out.println("Ingrese edad: ");
+				String edad = leer.nextLine();
+				
+				System.out.println("Ingrese altura (en cm): ");
+				int altura = Integer.parseInt(leer.nextLine());
+				
+				System.out.println("Ingrese peso (en gramos): ");
+				int peso = Integer.parseInt(leer.nextLine());
+				
+				System.out.println("En cuantos planetas trbaja?: ");
+				int cantPlanetas = Integer.parseInt(leer.nextLine());
+				
+				String[] planetas = new String[cantPlanetas];
+				
+				for(int i = 0; i < cantPlanetas; i++) {
+					System.out.println("Ingrese nombre del planeta "+(i+1)+" :");
+					String nomPlaneta = leer.nextLine();
+					planetas[i] = nomPlaneta;
+				}
+				
+				menu.ingresarHumano(nacionalidad, nombre, identificacion, region, ciudad, edad, altura, peso, planetas);
+				menu.mostrarDatosPrueba();
 				break;
 			}
 			case 4: {
+				
+				System.out.println("Ingrese la Identificacion : ");
+				String identificacion = leer.nextLine();
+				System.out.println("Que dato cambiara?: ");
+				System.out.print("""
+						1. Nacionalidad
+						2. Nombre
+						3. Identificacion
+						4. Region
+						5. Ciudad
+						6. Edad
+						7. Altura [metro]
+						8. Peso [kilogramos]
+						9. Planetas
+						>> """);
+				int datoCambiar = Integer.parseInt(leer.nextLine());
+				System.out.println("Ingrese el nuevo dato: ");
+				String nuevoDato = leer.nextLine();
+				
+				
+				break;
+			}
+			case 5: {
 
+				break;
+			}
+			case 6: {
+				System.out.println("Ingrese la Identificacion Universal: ");
+				String iUniversal = leer.nextLine();
+				
+				menu.eliminarExtraterrestre(iUniversal, menu);
+				menu.mostrarDatosPrueba();
+				
+				break;
+			}
+			case 7: {
+				System.out.println("Ingrese la Identificacion: ");
+				String identificacion = leer.nextLine();
+				
+				menu.eliminarHumano(identificacion, menu);
+				menu.mostrarDatosPrueba();
 				break;
 			}
 

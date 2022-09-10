@@ -93,7 +93,7 @@ public class Menu {
 	 */
 	public void modificarExtraterrestre(String iUniversal, int datoACambiar, String nuevoDato, Menu admin) {
 
-		int posicionExtraterrestreRegistro = admin.buscar(iUniversal);
+		int posicionExtraterrestreRegistro = admin.buscar(iUniversal,registro);
 
 		if (posicionExtraterrestreRegistro == registro.length) {
 			System.out.println(" ");
@@ -143,18 +143,58 @@ public class Menu {
 	/***
 	 * Da la opcion de ingresar a un nuevo humano por consola
 	 * 
+	 * @param nacionalidad
+	 * @param nombre
+	 * @param identificacion
+	 * @param region
+	 * @param ciudad
+	 * @param edad
+	 * @param altura
+	 * @param peso
+	 * @param planetasDeTrabajo
 	 */
-	public void ingresarHumano() {
+	public void ingresarHumano(String nacionalidad, String nombre, String identificacion, String region, String ciudad,
+			String edad, int altura, int peso, String[] planetasDeTrabajo) {
 
+		double nuevaAltura = (double)altura/100;
+		int nuevoPeso = peso/1000;
+		
+		String datosPlaneta = "";
+		int tam = 1;
+		
+		for(String s: planetasDeTrabajo) {
+			
+			if(tam != planetasDeTrabajo.length) {
+				datosPlaneta += (s+"/");
+			}else {
+				datosPlaneta += (s);
+			}
+			tam++;
+		}
+		
+		
+		String addRegistro = nacionalidad+","+nombre+","+identificacion+","+region+","+ciudad+","+edad+","+nuevaAltura+","+nuevoPeso+","+datosPlaneta;
+		
+		registroHumano = ampliar.add(addRegistro, registroHumano);
+		
+		
 	}
 
 	/***
 	 * Modifica los datos de un humano
 	 * 
 	 * @pre El humano ya debe estar registrado con anterioridad
+	 * 
+	 * @param iUniversal
+	 * @param datoACambiar
+	 * @param nuevoDato
+	 * @param admin
 	 */
-	public void modificarHumano() {
+	public void modificarHumano(String identificacion, int datoACambiar, String nuevoDato, Menu admin) {
 
+		
+		
+		
 	}
 
 	/***
@@ -173,27 +213,51 @@ public class Menu {
 	 * elimina
 	 * 
 	 * @param iUniversar
+	 * @param admin (Class Menu)
 	 * 
 	 * @pre El extraterrestre debe existir en los registros
 	 * @post Se elimina el extraterrestre de los registros y sino se encuentra al
 	 *       extraterrestre los registros no cambian
 	 */
-	public void eliminarExtraterrestre() {
+	public void eliminarExtraterrestre(String iUniversal,Menu admin) {
 
+		int posicion = admin.buscar(iUniversal,registro);
+		
+		if(posicion == registro.length) {
+			System.out.println("###################");
+			System.out.println("Extraterrestre no esta en el registro!");
+			System.out.println("###################");
+		}else {
+			registro = ampliar.delete(iUniversal, registro);
+			System.out.println("Registro eliminado");
+		}
+		
 	}
 
 	/***
 	 * /*** Al ingresar la "Identificacion universar" se busca al humano y se
 	 * elimina
 	 * 
-	 * @param iUniversal
+	 * @param identificacion
+	 * @param admin (Class Menu)
 	 * 
 	 * @pre El humano debe existir en los registros
 	 * @post Se elimina el humano de los registros y sino se encuentra al humano los
 	 *       registros no cambian
 	 */
-	public void eliminarHumano() {
+	public void eliminarHumano(String identificacion, Menu admin) {
 
+		int posicion = admin.buscar(identificacion,registroHumano);
+		
+		if(posicion == registroHumano.length) {
+			System.out.println("###################");
+			System.out.println("Humano no esta en el registro!");
+			System.out.println("###################");
+		}else {
+			registroHumano = ampliar.delete(identificacion, registroHumano);
+			System.out.println("Registro eliminado");
+		}
+		
 	}
 
 	/***
@@ -236,11 +300,17 @@ public class Menu {
 
 	}
 
-	private int buscar(String iUniversal) {
+	/***
+	 * Verifica si es que existe o no el elemento a buscar
+	 * 
+	 * @param iUniversal
+	 * @return
+	 */
+	private int buscar(String iUniversal,String[] listaBuscar) {
 
 		int posicion = 0;
 
-		for (String s : registro) {
+		for (String s : listaBuscar) {
 			String[] datos = s.split(",");
 			if (datos[2].equals(iUniversal)) {
 				break;
