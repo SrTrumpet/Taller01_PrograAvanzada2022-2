@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 /***
  * 
  * @author Elias M. Olivares
@@ -124,51 +123,51 @@ public class App {
 				break;
 			}
 			case 3: {
-				
+
 				System.out.println("Ingrese los datos para registrar a un humano: ");
 				System.out.println(" ");
 				System.out.println("Ingrese nacionalidad: ");
 				String nacionalidad = leer.nextLine();
-				
+
 				System.out.println("Ingrese nombre: ");
 				String nombre = leer.nextLine();
-				
+
 				System.out.println("Ingrese identificacion: ");
 				String identificacion = leer.nextLine();
-				
+
 				System.out.println("Ingrese region: ");
 				String region = leer.nextLine();
-				
+
 				System.out.println("Ingrese ciudad: ");
 				String ciudad = leer.nextLine();
-				
+
 				System.out.println("Ingrese edad: ");
 				String edad = leer.nextLine();
-				
+
 				System.out.println("Ingrese altura (en cm): ");
 				int altura = Integer.parseInt(leer.nextLine());
-				
+
 				System.out.println("Ingrese peso (en gramos): ");
 				int peso = Integer.parseInt(leer.nextLine());
-				
+
 				System.out.println("En cuantos planetas trbaja?: ");
 				int cantPlanetas = Integer.parseInt(leer.nextLine());
-				
+
 				String[] planetas = new String[cantPlanetas];
-				
-				for(int i = 0; i < cantPlanetas; i++) {
-					System.out.println("Ingrese nombre del planeta "+(i+1)+" :");
+
+				for (int i = 0; i < cantPlanetas; i++) {
+					System.out.println("Ingrese nombre del planeta " + (i + 1) + " :");
 					String nomPlaneta = leer.nextLine();
 					planetas[i] = nomPlaneta;
 				}
-				
+
 				menu.ingresarHumano(nacionalidad, nombre, identificacion, region, ciudad, edad, altura, peso, planetas);
 				menu.mostrarDatosPrueba();
 				break;
 			}
 			case 4: {
-				
-				////////////////////////////////////////////////////////////FALTA COMPLETAR
+
+				//////////////////////////////////////////////////////////// FALTA COMPLETAR
 				System.out.println("Ingrese la Identificacion : ");
 				String identificacion = leer.nextLine();
 				System.out.println("Que dato cambiara?: ");
@@ -184,41 +183,40 @@ public class App {
 						9. Planetas
 						>> """);
 				int datoCambiar = Integer.parseInt(leer.nextLine());
-				
-				if(datoCambiar == 9) {
-					System.out.println("Quiere añadir o eliminar un planeta del registro? añadir = 1; eliminar = 2; modificar = 3: ");
+
+				if (datoCambiar == 9) {
+					System.out.println(
+							"Quiere añadir o eliminar un planeta del registro? añadir = 1; eliminar = 2; modificar = 3: ");
 					int datoAddDelete = Integer.parseInt(leer.nextLine());
-					if(datoAddDelete == 1) {
+					if (datoAddDelete == 1) {
 						System.out.println("Ingrese el nombre del planeta: ");
 						String planetaNuevo = leer.nextLine();
-						
+
 						menu.modificarHumano(identificacion, datoCambiar, planetaNuevo, menu, -1);
-						
-					}else if(datoAddDelete == 2) {
+
+					} else if (datoAddDelete == 2) {
 						System.out.println("Ingrese el nombre del planeta: ");
 						String planetaEliminar = leer.nextLine();
-						
+
 						menu.modificarHumano(identificacion, datoCambiar, planetaEliminar, menu, -2);
-						
-						
-					}else if(datoAddDelete == 3) {
+
+					} else if (datoAddDelete == 3) {
 						System.out.println("Posicion del planeta a cambiar: ");
 						int dato = Integer.parseInt(leer.nextLine());
 						System.out.println("Ingrese el nombre del planeta");
 						String planetaNuevo = leer.nextLine();
-						
+
 						menu.modificarHumano(identificacion, datoCambiar, planetaNuevo, menu, dato);
-						
-					}
-					else {
+
+					} else {
 						System.out.println("Dato no permitido!");
 					}
-					
-				}else {
+
+				} else {
 					System.out.println("Recuerde ingresar las medidas en [kg] o [m] segun corresponda: ");
 					System.out.println("Ingrese el nuevo dato: ");
 					String nuevoDato = leer.nextLine();
-					
+
 					menu.modificarHumano(identificacion, datoCambiar, nuevoDato, menu, 0);
 				}
 
@@ -228,35 +226,35 @@ public class App {
 
 				System.out.println("Ingrese la nacionalidad a buscar: ");
 				String nacionalidad = leer.nextLine();
-				
-				menu.mostrarPorNacionalidad(nacionalidad,0);
-				
+
+				menu.mostrarPorNacionalidad(nacionalidad, 0);
+
 				break;
 			}
 			case 6: {
 				System.out.println("Ingrese la Identificacion Universal: ");
 				String iUniversal = leer.nextLine();
-				
+
 				menu.eliminarExtraterrestre(iUniversal, menu);
 				menu.mostrarDatosPrueba();
-				
+
 				break;
 			}
 			case 7: {
 				System.out.println("Ingrese la Identificacion: ");
 				String identificacion = leer.nextLine();
-				
+
 				menu.eliminarHumano(identificacion, menu);
 				menu.mostrarDatosPrueba();
 				break;
 			}
 			case 8: {
-				
+
 				System.out.println("Ingrese la identificacion universal: ");
 				String iUniversal = leer.nextLine();
-				
+
 				menu.buscarPorIdentificadorUniversar(iUniversal, menu);
-				
+
 				break;
 			}
 			case 9: {
@@ -264,11 +262,11 @@ public class App {
 				break;
 			}
 			case 10: {
-				
+
 				System.out.println("Ingrese la nacionalidad a buscar: ");
 				String nacionalidad = leer.nextLine();
-				
-				menu.mostrarPorNacionalidad(nacionalidad,1);
+
+				menu.mostrarPorNacionalidad(nacionalidad, 1);
 
 				break;
 			}
