@@ -210,7 +210,22 @@ public class App {
 				menu.mostrarDatosPrueba();
 				break;
 			}
+			case 8: {
 
+				break;
+			}
+			case 9: {
+
+				break;
+			}
+			case 10: {
+
+				break;
+			}
+			case 11: {
+
+				break;
+			}
 			default:
 				throw new IllegalArgumentException("Valor ingresado no permitido:  " + opcion);
 			}
