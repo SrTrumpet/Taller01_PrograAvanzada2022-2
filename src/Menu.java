@@ -1,9 +1,11 @@
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Menu {
 
 	private AmpliarRegistro ampliar = new AmpliarRegistro();
 	private Traductor traductor = new Traductor();
+	private GuardarTxt txt = new GuardarTxt();
 	private String[] registro;
 	private String[] registroHumano;
 	private int addExtra = 0;
@@ -18,22 +20,12 @@ public class Menu {
 	 */
 	public void inicializarRegistro(int cantidad, int tipo) {
 
-		int maxRegistro = 0;
+		int maxRegistro = cantidad;
 
 		if (tipo == 0) {
-			if (cantidad == 0) {
-				maxRegistro = 1;
-			} else {
-				maxRegistro = cantidad;
-			}
 			this.registro = new String[maxRegistro];
 
 		} else if (tipo == 1) {
-			if (cantidad == 0) {
-				maxRegistro = 1;
-			} else {
-				maxRegistro = cantidad;
-			}
 			this.registroHumano = new String[maxRegistro];
 		}
 
@@ -400,17 +392,52 @@ public class Menu {
 	 * 
 	 * @pre El planeta debe estar registrado
 	 */
-	public void mostrarPorPlaneta() {
+	public void mostrarPorPlaneta(String planeta) {
+		
+		double cantExtraterrestres = 0;
+		boolean existe = true;
+		System.out.println("###############################");
+		System.out.println("Buscando seres en el planeta: "+planeta);
+		System.out.println("###############################");
+		for(String s: registro) {
+			String[] datos = s.split(",");
+			if(datos[3].equals(planeta)) {
+				existe = false;
+				cantExtraterrestres++;
+				System.out.println("Especie: " + datos[0]);
+				System.out.println("Nombre: " + datos[1]);
+				System.out.println("Identificacion Universal: " + datos[2]);
+				System.out.println("Planeta de Origen: " + datos[3]);
+				System.out.println("Edad (conversion a humano): " + datos[4]);
+				System.out.println("Altura: " + datos[5] + " [m]");
+				System.out.println("Peso: " + datos[6] + " [kg]");
+				System.out.println("Tipo: " + datos[7]);
+				System.out.println("##################################");
+			}
 
-	}
-
-	/***
-	 * Se ingresa la nacionalidad y muestra por consola los datos de los humanos, y
-	 * el porcentaje de humanos que hay en esa nacionalidad con respecto al resto de
-	 * naciones
-	 */
-	public void mostrarPorNacionalidadDatosHumanos() {
-
+		}
+		
+		int cantHumanos = 0;
+		
+		for(String s: registroHumano) {
+			String[] datos = s.split(",");
+			String[] planetas = datos[8].split("/");
+			for(String sPlaneta: planetas) {
+				if(sPlaneta.equals(planeta)) {
+					cantHumanos++;
+					break;
+				}
+			}
+		}
+		
+		if(existe) {
+			System.out.println("Planeta: "+planeta+" NO existe en los registros!!");
+		}else {
+			System.out.println(" ");
+			System.out.println("Total de extraterrestre en el planeta "+planeta+": "+(int)cantExtraterrestres);
+			System.out.println("Hay un "+((100*cantExtraterrestres)/registro.length)+"% en comparacion al resto de planetas");
+			System.out.println("Humanos trabajado en el palenta "+planeta+": "+(int)cantHumanos);
+		}
 	}
 
 	/***
@@ -420,7 +447,38 @@ public class Menu {
 	 * @post V = Vertebrados, I = Invertebrados y F = Flexible
 	 */
 	public void mostrarCantidadExtraterrestres() {
+		
+		int cantVertebrados = 0;
+		int cantInvertebrados = 0;
+		int cantFlexibles = 0;
+		int totalExtraterrestre = registro.length;
+		
+		for(String s: registro) {
+			String[] datos = s.split(",");
+			if(datos[7].equals("V")) {
+				cantVertebrados++;
+			}else if(datos[7].equals("I")) {
+				cantInvertebrados++;
+			}else if(datos[7].equals("F")) {
+				cantFlexibles++;
+			}
+		}
+		System.out.println("########################################");
+		System.out.println("Total de extraterrestres: "+totalExtraterrestre);
+		System.out.println("########################################");
+		System.out.println("Vertebrados | Invertebrados | Flexible");
+		System.out.println("     "+cantVertebrados+"      |       "+cantInvertebrados+"       |    "+cantFlexibles);
+		System.out.println("########################################");
+		System.out.println("Porcentajes ");
+		System.out.println("########################################");
+		System.out.println("Vertebrados: "+((double)cantVertebrados*100/totalExtraterrestre)+"%");
+		System.out.println("Invertebrados: "+((double)cantInvertebrados*100/totalExtraterrestre)+"%");
+		System.out.println("Flexibles: "+((double)cantFlexibles*100/totalExtraterrestre)+"%");
 
+	}
+	
+	public void guardarArchivos() throws IOException {
+		txt.guardarArch(registro, registroHumano);
 	}
 
 	/***

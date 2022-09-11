@@ -15,7 +15,7 @@ public class App {
 		Scanner leer = new Scanner(System.in);
 
 		app.ejecutor(app, menu);
-		menu.mostrarDatosPrueba();
+		//menu.mostrarDatosPrueba();
 		app.menuInicio(leer, menu);
 
 	}
@@ -34,7 +34,7 @@ public class App {
 
 	}
 
-	public void menuInicio(Scanner leer, Menu menu) {
+	public void menuInicio(Scanner leer, Menu menu) throws IOException {
 
 		int opcion = -1;
 		while (opcion != 12) {
@@ -76,26 +76,27 @@ public class App {
 				System.out.println("Ingrese planeta de origen: ");
 				String planeta = leer.nextLine();
 
-				System.out.println("Ingrese edad: ");
+				System.out.println("Ingrese edad(Edad en humano): ");
 				String edad = leer.nextLine();
-				int edadExtra = Integer.parseInt(edad) * 8;
+				int edadExtra = Integer.parseInt(edad);
 				edad = String.valueOf(edadExtra);
 
-				System.out.println("Ingrese altura: ");
+				System.out.println("Ingrese altura (En Metros) : ");
 				String altura = leer.nextLine();
-				double alturaExt = Math.round(Double.parseDouble(altura) * 100);
+				double alturaExt = Double.parseDouble(altura);
 				altura = String.valueOf(alturaExt);
 
-				System.out.println("Ingrese peso: ");
+				System.out.println("Ingrese peso (En Kilogramos): ");
 				String peso = leer.nextLine();
-				double pesoExt = Math.round(Double.parseDouble(peso) * 1000);
+				double pesoExt = Double.parseDouble(peso);
 				peso = String.valueOf(pesoExt);
 
-				System.out.println("Ingrese tipo: ");
+				System.out.println("Ingrese tipo (V, I o F): ");
 				String tipo = leer.nextLine().toUpperCase();
 
 				menu.ingresarExtraterrestre(especie, nombre, iUniversal, planeta, edad, altura, peso, tipo);
-				menu.mostrarDatosPrueba();
+				
+				//menu.mostrarDatosPrueba();
 
 				break;
 			}
@@ -162,7 +163,8 @@ public class App {
 				}
 
 				menu.ingresarHumano(nacionalidad, nombre, identificacion, region, ciudad, edad, altura, peso, planetas);
-				menu.mostrarDatosPrueba();
+				
+				//menu.mostrarDatosPrueba();
 				break;
 			}
 			case 4: {
@@ -236,7 +238,7 @@ public class App {
 				String iUniversal = leer.nextLine();
 
 				menu.eliminarExtraterrestre(iUniversal, menu);
-				menu.mostrarDatosPrueba();
+				//menu.mostrarDatosPrueba();
 
 				break;
 			}
@@ -245,7 +247,7 @@ public class App {
 				String identificacion = leer.nextLine();
 
 				menu.eliminarHumano(identificacion, menu);
-				menu.mostrarDatosPrueba();
+				//menu.mostrarDatosPrueba();
 				break;
 			}
 			case 8: {
@@ -258,7 +260,11 @@ public class App {
 				break;
 			}
 			case 9: {
-
+				System.out.println("Ingrese el planeta a buscar: ");
+				String planeta = leer.nextLine();
+				
+				menu.mostrarPorPlaneta(planeta);
+				
 				break;
 			}
 			case 10: {
@@ -271,13 +277,22 @@ public class App {
 				break;
 			}
 			case 11: {
-
+				menu.mostrarCantidadExtraterrestres();
+				break;
+			}
+			case 12: {
+				
 				break;
 			}
 			default:
 				throw new IllegalArgumentException("Valor ingresado no permitido:  " + opcion);
 			}
 		}
+		
+		
+		///Guardar los nuevos datos
+		menu.guardarArchivos();
+		
 
 	}
 
