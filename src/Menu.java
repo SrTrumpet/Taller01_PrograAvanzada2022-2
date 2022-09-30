@@ -12,11 +12,11 @@ public class Menu {
 	private int addHumano = 0;
 
 	/***
-	 * Da el tamaño inicial de los registros que contendran los datos de los
-	 * extraterrestres y humanos
+	 * Gives the initial size of the records that will contain the extraterrestrial
+	 * and human data.
 	 * 
-	 * @param cantidad (valor que define la cantidad de espacio del arreglo)
-	 * @param tipo     (define si sera registro humano o extraterrestre)
+	 * @param cantidad (value defining the amount of array space)
+	 * @param tipo     (define whether it will be human or extraterrestrial record)
 	 */
 	public void inicializarRegistro(int cantidad, int tipo) {
 
@@ -32,7 +32,7 @@ public class Menu {
 	}
 
 	/***
-	 * Convierte los datos de un archivo txt a un arreglo de String
+	 * Convert data from a txt file to a String vector
 	 * 
 	 * @param linea
 	 * @param ex
@@ -53,9 +53,9 @@ public class Menu {
 
 	/***
 	 * 
-	 * Da la opcion de ingresar a un nuevo extraterrestre por consola.
+	 * It offers the option of introducing a new alien per console.
 	 * 
-	 * @Precondicion Se deben de ingresar los datos en el lenguaje humano
+	 * @Precondicion Data must be entered in human language.
 	 * 
 	 * @param nombreEspecie
 	 * @param nombre
@@ -77,11 +77,12 @@ public class Menu {
 	}
 
 	/***
-	 * Modifica los datos de un extraterrestre, se debe ingresar la "Identificacion
-	 * Universal" la cual debe ser unica para cada extraterrestre
+	 * Modify the data of an extraterrestrial, you must enter the "Universal ID"
+	 * which must be unique for each extraterrestrial. which must be unique for each
+	 * extraterrestrial.
 	 * 
 	 * @param iUniversal
-	 * @pre El extraterrestre ya debe estar registrado con anterioridad
+	 * @pre The extraterrestrial must already be registered beforehand
 	 */
 	public void modificarExtraterrestre(String iUniversal, int datoACambiar, String nuevoDato, Menu admin) {
 
@@ -133,7 +134,7 @@ public class Menu {
 	}
 
 	/***
-	 * Da la opcion de ingresar a un nuevo humano por consola
+	 * Gives the option to enter a new human by console.
 	 * 
 	 * @param nacionalidad
 	 * @param nombre
@@ -172,12 +173,12 @@ public class Menu {
 	}
 
 	/***
-	 * Modifica los datos de un humano, si se quiere cambiar los datos de la lista
-	 * de los planetas como ultimo dato se debe ingresar "-1" si se quiere añadir un
-	 * dato, "-2" si se quiere eliminar un dato o se ingresa la posicion del planeta
-	 * para modificarlo
+	 * Modify the data of a human, if you want to change the data of the list of
+	 * planets as the last data you must enter "-1" if you want to add a data, "-2"
+	 * if you want to delete a data or enter the position of the planet to modify
+	 * it.
 	 * 
-	 * @pre El humano ya debe estar registrado con anterioridad
+	 * @pre The human must already be registered in advance
 	 * 
 	 * @param iUniversal
 	 * @param datoACambiar
@@ -263,13 +264,13 @@ public class Menu {
 	}
 
 	/***
-	 * Muestra por consola los humanos que perteneces a la nacionalidad ingresada,
+	 * Display by console the humans belonging to the entered nationality
 	 * 
 	 * @param nacionalidad
-	 * @param porcentaje   (Se ingresa 0 si no quiere mostar el porcentaje o 1 si se
-	 *                     quiere mostrar el porcentaje)
+	 * @param porcentaje   (Enter 0 if you do not want to show the percentage or 1
+	 *                     if you want to show the percentage.)
 	 * 
-	 * @pre La nacionalidad debe de existir
+	 * @pre Nationality must exist
 	 */
 	public void mostrarPorNacionalidad(String nacionalidad, int porcentaje) {
 
@@ -309,15 +310,14 @@ public class Menu {
 	}
 
 	/***
-	 * Al ingresar la "Identificacion universar" se busca al extraterrestre y se
-	 * elimina
+	 * Entering the "Universal ID" searches for the alien and deletes it.
 	 * 
 	 * @param iUniversar
 	 * @param admin      (Class Menu)
 	 * 
-	 * @pre El extraterrestre debe existir en los registros
-	 * @post Se elimina el extraterrestre de los registros y sino se encuentra al
-	 *       extraterrestre los registros no cambian
+	 * @pre The extraterrestrial must exist in the records
+	 * @post The alien is removed from the records and if the alien is not found the
+	 *       records do not change.
 	 */
 	public void eliminarExtraterrestre(String iUniversal, Menu admin) {
 
@@ -335,15 +335,14 @@ public class Menu {
 	}
 
 	/***
-	 * /*** Al ingresar la "Identificacion universar" se busca al humano y se
-	 * elimina
+	 * When entering the "Universal ID" the human is searched for and eliminated.
 	 * 
 	 * @param identificacion
 	 * @param admin          (Class Menu)
 	 * 
-	 * @pre El humano debe existir en los registros
-	 * @post Se elimina el humano de los registros y sino se encuentra al humano los
-	 *       registros no cambian
+	 * @pre The human must exist in the records
+	 * @post The human is removed from the records and if the human is not found the
+	 *       records do not change.
 	 */
 	public void eliminarHumano(String identificacion, Menu admin) {
 
@@ -361,10 +360,10 @@ public class Menu {
 	}
 
 	/***
-	 * Recibe el "Identificador Universar" y muestra los datos del extraterrestre
+	 * Receives the "Universar Identifier" and displays the alien's data.
 	 * 
 	 * @param iUniversal
-	 * @pre El extraterrestre debe existir en los registros
+	 * @pre The extraterrestrial must exist in the records
 	 */
 	public void buscarPorIdentificadorUniversar(String iUniversal, Menu menu) {
 
@@ -386,22 +385,22 @@ public class Menu {
 	}
 
 	/***
-	 * Se debe pasar el identificador del el planeta o el nombre del mismo y muestra
-	 * por consola el porcentaje de extraterrestres que existen en ese planeta en
-	 * comparacion al resto existentes en la base de datos
+	 * You must pass the identifier of the planet or the name of the planet and it
+	 * shows by console the percentage of extraterrestrials that exist on that
+	 * planet compared to the rest in the database.
 	 * 
-	 * @pre El planeta debe estar registrado
+	 * @pre The planet must be registered
 	 */
 	public void mostrarPorPlaneta(String planeta) {
-		
+
 		double cantExtraterrestres = 0;
 		boolean existe = true;
 		System.out.println("###############################");
-		System.out.println("Buscando seres en el planeta: "+planeta);
+		System.out.println("Buscando seres en el planeta: " + planeta);
 		System.out.println("###############################");
-		for(String s: registro) {
+		for (String s : registro) {
 			String[] datos = s.split(",");
-			if(datos[3].equals(planeta)) {
+			if (datos[3].equals(planeta)) {
 				existe = false;
 				cantExtraterrestres++;
 				System.out.println("Especie: " + datos[0]);
@@ -416,73 +415,75 @@ public class Menu {
 			}
 
 		}
-		
+
 		int cantHumanos = 0;
-		
-		for(String s: registroHumano) {
+
+		for (String s : registroHumano) {
 			String[] datos = s.split(",");
 			String[] planetas = datos[8].split("/");
-			for(String sPlaneta: planetas) {
-				if(sPlaneta.equals(planeta)) {
+			for (String sPlaneta : planetas) {
+				if (sPlaneta.equals(planeta)) {
 					cantHumanos++;
 					break;
 				}
 			}
 		}
-		
-		if(existe) {
-			System.out.println("Planeta: "+planeta+" NO existe en los registros!!");
-		}else {
+
+		if (existe) {
+			System.out.println("Planeta: " + planeta + " NO existe en los registros!!");
+		} else {
 			System.out.println(" ");
-			System.out.println("Total de extraterrestre en el planeta "+planeta+": "+(int)cantExtraterrestres);
-			System.out.println("Hay un "+((100*cantExtraterrestres)/registro.length)+"% en comparacion al resto de planetas");
-			System.out.println("Humanos trabajado en el palenta "+planeta+": "+(int)cantHumanos);
+			System.out.println("Total de extraterrestre en el planeta " + planeta + ": " + (int) cantExtraterrestres);
+			System.out.println("Hay un " + ((100 * cantExtraterrestres) / registro.length)
+					+ "% en comparacion al resto de planetas");
+			System.out.println("Humanos trabajado en el palenta " + planeta + ": " + (int) cantHumanos);
 		}
 	}
 
 	/***
-	 * Muestra por consola los tipos de extraterrestres que existen separados por su
-	 * estructura
+	 * Shows by console the types of extraterrestrials that exist separated by their
+	 * structure.
 	 * 
-	 * @post V = Vertebrados, I = Invertebrados y F = Flexible
+	 * @post V = Vertebrates, I = Invertebrates y F = Flexible
 	 */
 	public void mostrarCantidadExtraterrestres() {
-		
+
 		int cantVertebrados = 0;
 		int cantInvertebrados = 0;
 		int cantFlexibles = 0;
 		int totalExtraterrestre = registro.length;
-		
-		for(String s: registro) {
+
+		for (String s : registro) {
 			String[] datos = s.split(",");
-			if(datos[7].equals("V")) {
+			if (datos[7].equals("V")) {
 				cantVertebrados++;
-			}else if(datos[7].equals("I")) {
+			} else if (datos[7].equals("I")) {
 				cantInvertebrados++;
-			}else if(datos[7].equals("F")) {
+			} else if (datos[7].equals("F")) {
 				cantFlexibles++;
 			}
 		}
 		System.out.println("########################################");
-		System.out.println("Total de extraterrestres: "+totalExtraterrestre);
+		System.out.println("Total de extraterrestres: " + totalExtraterrestre);
 		System.out.println("########################################");
 		System.out.println("Vertebrados | Invertebrados | Flexible");
-		System.out.println("     "+cantVertebrados+"      |       "+cantInvertebrados+"       |    "+cantFlexibles);
+		System.out.println(
+				"     " + cantVertebrados + "      |       " + cantInvertebrados + "       |    " + cantFlexibles);
 		System.out.println("########################################");
 		System.out.println("Porcentajes ");
 		System.out.println("########################################");
-		System.out.println("Vertebrados: "+((double)cantVertebrados*100/totalExtraterrestre)+"%");
-		System.out.println("Invertebrados: "+((double)cantInvertebrados*100/totalExtraterrestre)+"%");
-		System.out.println("Flexibles: "+((double)cantFlexibles*100/totalExtraterrestre)+"%");
+		System.out.println("Vertebrados: " + ((double) cantVertebrados * 100 / totalExtraterrestre) + "%");
+		System.out.println("Invertebrados: " + ((double) cantInvertebrados * 100 / totalExtraterrestre) + "%");
+		System.out.println("Flexibles: " + ((double) cantFlexibles * 100 / totalExtraterrestre) + "%");
 
 	}
-	
+
 	public void guardarArchivos() throws IOException {
 		txt.guardarArch(registro, registroHumano);
 	}
 
 	/***
-	 * Verifica si es que existe o no el elemento a buscar
+	 * Checks whether or not the item to be searched for exists.
 	 * 
 	 * @param iUniversal
 	 * @return

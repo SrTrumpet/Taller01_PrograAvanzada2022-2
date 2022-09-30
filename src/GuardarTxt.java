@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 public class GuardarTxt {
 
 	private File archExtra = new File("x.txt");
@@ -49,10 +50,10 @@ public class GuardarTxt {
 	}
 
 	/***
-	 * Cambio de datos para los registros de extraterrestre
+	 * Change of data for extraterrestrial records so that they can be read by them.
 	 * 
 	 * @param registro
-	 * @return
+	 * @return nuevoDato
 	 */
 	private String[] cambioDatos(String[] registro) {
 
@@ -68,6 +69,10 @@ public class GuardarTxt {
 	}
 
 	/***
+	 * Change of measurement data to human readout
+	 * 
+	 * @param registro
+	 * @return nuevoDato
 	 * 
 	 */
 	private String[] cambioDatosHumanos(String[] registro) {

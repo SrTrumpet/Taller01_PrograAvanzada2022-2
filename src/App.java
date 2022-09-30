@@ -21,8 +21,7 @@ public class App {
 	}
 
 	/***
-	 * Administra los pasos a seguir para transformar los datos de un archivo .txt a
-	 * un arreglo de String
+	 * Manages the steps to follow to transform data from a .txt file to a String vector
 	 * 
 	 * @param app
 	 * @param menu

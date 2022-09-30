@@ -1,7 +1,7 @@
 public class Traductor {
 
 	/***
-	 * Traduce el lenguaje extraterrestre a humano y viceversa
+	 * Translates extraterrestrial language into human language and vice versa.
 	 * 
 	 * @param linea
 	 * @return traduccion
@@ -12,12 +12,11 @@ public class Traductor {
 		String frase = "";
 		String tipo = datos[7];
 		String identificacion = datos[2];
-		
-		
+
 		for (int i = 0; i < datos.length; i++) {
 			String[] valores = datos[i].split("");
 			frase = "";
-			
+
 			for (int j = 0; j < valores.length; j++) {
 				if (valores[j].equals("A")) {
 					valores[j] = "E";
@@ -48,16 +47,16 @@ public class Traductor {
 				frase += valores[j];
 			}
 
-			if(i == 7) {
+			if (i == 7) {
 				datos[i] = tipo;
-			}else if( i == 2) {
+			} else if (i == 2) {
 				datos[i] = identificacion;
 			}
-			
+
 			else {
 				datos[i] = frase;
 			}
-			
+
 		}
 
 		String traduccion = "";
@@ -72,9 +71,8 @@ public class Traductor {
 	}
 
 	/***
-	 * Cambia las medidas usadas por los extraterrestres a humano (Edad => 1 año
-	 * humano = 8 años extraterrestres, Peso => Gramos a Kilogramos, Altura => cm a
-	 * metros)
+	 * Change the measurements used by aliens to human (Age => 1 year human = 8
+	 * years aliens, Weight => Grams to Kilograms, Height => cm to meters).
 	 * 
 	 * @param linea
 	 * @return nuevosDatos
@@ -110,7 +108,7 @@ public class Traductor {
 	}
 
 	/***
-	 * Rebierte las medidas antes cambiadas para poder ser leidas por humanos
+	 * Reverses previously changed measurements to be readable by humans
 	 * 
 	 * @param linea
 	 * @return nuevosDatos
@@ -118,12 +116,11 @@ public class Traductor {
 
 	public String rebertirMedidas(String linea) {
 
-		
 		String[] datos = linea.split(",");
 		String frase = "";
 		String tipo = datos[7];
 		String identificacion = datos[2];
-		
+
 		for (int i = 0; i < datos.length; i++) {
 			String[] valores = datos[i].split("");
 			frase = "";
@@ -157,11 +154,11 @@ public class Traductor {
 				frase += valores[j];
 			}
 
-			if(i == 7) {
+			if (i == 7) {
 				datos[i] = tipo;
-			}else if( i == 2) {
+			} else if (i == 2) {
 				datos[i] = identificacion;
-			}else {
+			} else {
 				datos[i] = frase;
 			}
 
@@ -172,12 +169,12 @@ public class Traductor {
 		for (String s : datos) {
 			traduccion += (s + ",");
 		}
-		
+
 		String[] datos2 = traduccion.split(",");
 
 		int edad = Integer.parseInt(datos[4]) * 8;
 		datos2[4] = String.valueOf(edad);
-		
+
 		double altura = Double.parseDouble(datos[5]) * 100;
 		datos2[5] = String.valueOf(altura);
 
@@ -200,7 +197,8 @@ public class Traductor {
 	}
 
 	/***
-	 * Cambia los datos "Altura" y "Peso", de Cm => Metro y Gramos => Kilogramos
+	 * Change the data "Height" and "Weight" from Cm => Meter and Grams =>
+	 * Kilograms.
 	 * 
 	 * @param linea
 	 * @return
@@ -221,9 +219,10 @@ public class Traductor {
 		}
 		return nuevosDatos;
 	}
-	
+
 	/***
-	 * Cambia los datos "Altura" y "Peso", de Metro => Cm y Kilogramos => Gramos
+	 * Change the data "Height" and "Weight" from Meter => Cm and Kilograms =>
+	 * Grams.
 	 * 
 	 * @param linea
 	 * @return
@@ -240,11 +239,11 @@ public class Traductor {
 
 		String nuevosDatos = "";
 		int ultimoDato = 0;
-		
+
 		for (String s : datos) {
-			if(ultimoDato == datos.length - 1) {
+			if (ultimoDato == datos.length - 1) {
 				nuevosDatos += s;
-			}else {
+			} else {
 				nuevosDatos += (s + ",");
 			}
 			ultimoDato++;

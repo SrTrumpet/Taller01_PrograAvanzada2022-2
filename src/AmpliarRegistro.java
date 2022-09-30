@@ -2,8 +2,7 @@
 public class AmpliarRegistro {
 
 	/***
-	 * Recibe la lista a la que se le quiere añadir un nuevo dato, y el dato que se
-	 * añadirá
+	 * Receives the list to which you want to add a new data, and the data to be added.
 	 * 
 	 * @param datos
 	 * @param listaAnterior
@@ -25,8 +24,7 @@ public class AmpliarRegistro {
 	}
 
 	/***
-	 * Se ingresa el dato clave para encontrar el dato que se eliminara, y se
-	 * ingresa la lista que se quiere quitar el dato
+	 * Enter the key data to find the values to be deleted, and enter the list containing it
 	 * 
 	 * @param datoEliminar
 	 * @param listaAnterior
@@ -50,8 +48,7 @@ public class AmpliarRegistro {
 	}
 
 	/***
-	 * Se ingresa el dato clave para encontrar el dato que se eliminara, y se
-	 * ingresa la lista que se quiere quitar el dato
+	 * Enter the key data to find the data to be removed, and enter the list you want to remove the data from.
 	 * 
 	 * @param datoEliminar
 	 * @param listaAnterior
