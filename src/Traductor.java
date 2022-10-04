@@ -1,7 +1,7 @@
 public class Traductor {
 
 	/***
-	 * Translates extraterrestrial language into human language and vice versa.
+	 * Translates extraterrestrial language to human and human to extraterrestrial.
 	 * 
 	 * @param linea
 	 * @return traduccion
